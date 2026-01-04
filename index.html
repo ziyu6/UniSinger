@@ -1,1 +1,373 @@
 
+<!DOCTYPE html>
+<!-- saved from url=(0033)https://QicongXie.github.io/end2endvc/ -->
+<html lang="en-US">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+
+
+  <!-- Begin Jekyll SEO tag v2.7.1 -->
+  <title>HiStyle: Hierarchical Style Embedding Predictor for Text-Prompt-Guided Controllable Speech Synthesis</title>
+  <meta name="generator" content="Jekyll v3.9.0">
+  <meta property="og:title"
+    content="HiStyle: Hierarchical Style Embedding Predictor for Text-Prompt-Guided Controllable Speech Synthesis">
+  <meta property="og:locale" content="en_US">
+  <meta name="twitter:card" content="summary">
+  <!-- End Jekyll SEO tag -->
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f2d0fa">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body data-new-gr-c-s-check-loaded="14.1001.0" data-gr-ext-installed="">
+  <section class="page-header">
+
+  </section>
+
+  <section class="main-content">
+    <h1 id="">
+      <center>HiStyle: Hierarchical Style Embedding Predictor for Text-Prompt-Guided Controllable Speech Synthesis</center>
+    </h1>
+
+    <!-- <center>Ziqian Ning<sup>1</sup>, Huakang Chen<sup>1</sup>, Yuepeng Jiang<sup>1</sup>, Jixun Yao<sup>1</sup>, Chunbo
+      Hao<sup>1</sup>, Guobin Ma<sup>1</sup>, Shuai Wang<sup>2</sup>, Lei Xie<sup>1</sup></center>
+    <center><a href="http://www.npu-aslp.org">Audio, Speech and Language Processing Group (ASLP@NPU), School of Computer
+        Science, Northwestern Polytechnical University, Xi'an, China </a></center>
+    <center><a href="http://www.sribd.cn/en">Shenzhen Research Institute of Big Data, The Chinese University of Hong
+        Kong, Shenzhen (CUHK-Shenzhen), China</a></center> -->
+
+    <!-- <br><br> -->
+
+    <!-- <div style="text-align: center">
+      <a href="https://github.com/ASLP-lab/DiffRhythm" class="github-link" target="_blank" rel="noopener noreferrer"
+        style="margin-right: 20px;">
+        <svg fill="currentColor" height="28" width="28" viewBox="0 0 16 16">
+          <path
+            d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z">
+          </path>
+        </svg>
+        <span style="font-size: 24px ;">GitHub</span>
+      </a>
+
+      <a href="https://huggingface.co/ASLP-lab/DiffRhythm-base" class="huggingface-link" target="_blank"
+        rel="noopener noreferrer" style="margin-right: 20px;">
+        <svg fill="currentColor" height="28" width="28" viewBox="0 0 24 24">
+          <path
+            d="M16.781 3.277c2.997 1.704 4.844 4.851 4.844 8.258 0 .995-.155 1.955-.443 2.857a1.332 1.332 0 011.125.4 1.41 1.41 0 01.2 1.723c.204.165.352.385.428.632l.017.062c.06.222.12.69-.2 1.166.244.37.279.836.093 1.236-.255.57-.893 1.018-2.128 1.5l-.202.078-.131.048c-.478.173-.89.295-1.061.345l-.086.024c-.89.243-1.808.375-2.732.394-1.32 0-2.3-.36-2.923-1.067a9.852 9.852 0 01-3.18.018C9.778 21.647 8.802 22 7.494 22a11.249 11.249 0 01-2.541-.343l-.221-.06-.273-.08a16.574 16.574 0 01-1.175-.405c-1.237-.483-1.875-.93-2.13-1.501-.186-.4-.151-.867.093-1.236a1.42 1.42 0 01-.2-1.166c.069-.273.226-.516.447-.694a1.41 1.41 0 01.2-1.722c.233-.248.557-.391.917-.407l.078-.001a9.385 9.385 0 01-.44-2.85c0-3.407 1.847-6.554 4.844-8.258a9.822 9.822 0 019.687 0zM4.188 14.758c.125.687 2.357 2.35 2.14 2.707-.19.315-.796-.239-.948-.386l-.041-.04-.168-.147c-.561-.479-2.304-1.9-2.74-1.432-.43.46.119.859 1.055 1.42l.784.467.136.083c1.045.643 1.12.84.95 1.113-.188.295-3.07-2.1-3.34-1.083-.27 1.011 2.942 1.304 2.744 2.006-.2.7-2.265-1.324-2.685-.537-.425.79 2.913 1.718 2.94 1.725l.16.04.175.042c1.227.284 3.565.65 4.435-.604.673-.973.64-1.709-.248-2.61l-.057-.057c-.945-.928-1.495-2.288-1.495-2.288l-.017-.058-.025-.072c-.082-.22-.284-.639-.63-.584-.46.073-.798 1.21.12 1.933l.05.038c.977.721-.195 1.21-.573.534l-.058-.104-.143-.25c-.463-.799-1.282-2.111-1.739-2.397-.532-.332-.907-.148-.782.541zm14.842-.541c-.533.335-1.563 2.074-1.94 2.751a.613.613 0 01-.687.302.436.436 0 01-.176-.098.303.303 0 01-.049-.06l-.014-.028-.008-.02-.007-.019-.003-.013-.003-.017a.289.289 0 01-.004-.048c0-.12.071-.266.25-.427.026-.024.054-.047.084-.07l.047-.036c.022-.016.043-.032.063-.049.883-.71.573-1.81.131-1.917l-.031-.006-.056-.004a.368.368 0 00-.062.006l-.028.005-.042.014-.039.017-.028.015-.028.019-.036.027-.023.02c-.173.158-.273.428-.31.542l-.016.054s-.53 1.309-1.439 2.234l-.054.054c-.365.358-.596.69-.702 1.018-.143.437-.066.868.21 1.353.055.097.117.195.187.296.882 1.275 3.282.876 4.494.59l.286-.07.25-.074c.276-.084.736-.233 1.2-.42l.188-.077.065-.028.064-.028.124-.056.081-.038c.529-.252.964-.543.994-.827l.001-.036a.299.299 0 00-.037-.139c-.094-.176-.271-.212-.491-.168l-.045.01c-.044.01-.09.024-.136.04l-.097.035-.054.022c-.559.23-1.238.705-1.607.745h.006a.452.452 0 01-.05.003h-.024l-.024-.003-.023-.005c-.068-.016-.116-.06-.14-.142a.22.22 0 01-.005-.1c.062-.345.958-.595 1.713-.91l.066-.028c.528-.224.97-.483.985-.832v-.04a.47.47 0 00-.016-.098c-.048-.18-.175-.251-.36-.251-.785 0-2.55 1.36-2.92 1.36-.025 0-.048-.007-.058-.024a.6.6 0 01-.046-.088c-.1-.238.068-.462 1.06-1.066l.209-.126c.538-.32 1.01-.588 1.341-.831.29-.212.475-.406.503-.6l.003-.028c.008-.113-.038-.227-.147-.344a.266.266 0 00-.07-.054l-.034-.015-.013-.005a.403.403 0 00-.13-.02c-.162 0-.369.07-.595.18-.637.313-1.431.952-1.826 1.285l-.249.215-.033.033c-.08.078-.288.27-.493.386l-.071.037-.041.019a.535.535 0 01-.122.036h.005a.346.346 0 01-.031.003l.01-.001-.013.001c-.079.005-.145-.021-.19-.095a.113.113 0 01-.014-.065c.027-.465 2.034-1.991 2.152-2.642l.009-.048c.1-.65-.271-.817-.791-.493zM11.938 2.984c-4.798 0-8.688 3.829-8.688 8.55 0 .692.083 1.364.24 2.008l.008-.009c.252-.298.612-.46 1.017-.46.355.008.699.117.993.312.22.14.465.384.715.694.261-.372.69-.598 1.15-.605.852 0 1.367.728 1.562 1.383l.047.105.06.127c.192.396.595 1.139 1.143 1.68 1.06 1.04 1.324 2.115.8 3.266a8.865 8.865 0 002.024-.014c-.505-1.12-.26-2.17.74-3.186l.066-.066c.695-.684 1.157-1.69 1.252-1.912.195-.655.708-1.383 1.56-1.383.46.007.889.233 1.15.605.25-.31.495-.553.718-.694a1.87 1.87 0 01.99-.312c.357 0 .682.126.925.36.14-.61.215-1.245.215-1.898 0-4.722-3.89-8.55-8.687-8.55zm1.857 8.926l.439-.212c.553-.264.89-.383.89.152 0 1.093-.771 3.208-3.155 3.262h-.184c-2.325-.052-3.116-2.06-3.156-3.175l-.001-.087c0-1.107 1.452.586 3.25.586.716 0 1.379-.272 1.917-.526zm4.017-3.143c.45 0 .813.358.813.8 0 .441-.364.8-.813.8a.806.806 0 01-.812-.8c0-.442.364-.8.812-.8zm-11.624 0c.448 0 .812.358.812.8 0 .441-.364.8-.812.8a.806.806 0 01-.813-.8c0-.442.364-.8.813-.8zm7.79-.841c.32-.384.846-.54 1.33-.394.483.146.83.564.878 1.06.048.495-.212.97-.659 1.203-.322.168-.447-.477-.767-.585l.002-.003c-.287-.098-.772.362-.925.079a1.215 1.215 0 01.14-1.36zm-4.323 0c.322.384.377.92.14 1.36-.152.283-.64-.177-.925-.079l.003.003c-.108.036-.194.134-.273.24l-.118.165c-.11.15-.22.262-.377.18a1.226 1.226 0 01-.658-1.204c.048-.495.395-.913.878-1.059a1.262 1.262 0 011.33.394z">
+          </path>
+        </svg>
+        <span style="font-size: 24px;">Hugging Face</span>
+      </a>
+
+      <a href="https://huggingface.co/spaces/ASLP-lab/DiffRhythm" class="huggingface-link" target="_blank"
+        rel="noopener noreferrer">
+        <svg class="size-8 mr-1.5 dark:mr-2 dark:drop-shadow-md" xmlns="http://www.w3.org/2000/svg"
+          xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" focusable="false" role="img" width="28"
+          height="28" preserveAspectRatio="xMidYMid meet" viewBox="0 0 39 40">
+          <path
+            d="M6.3712 2.04427C3.7183 2.04427 1.56771 4.19486 1.56771 6.84776V18.3546V18.6544V32.7341C1.56771 35.3868 3.71818 37.5377 6.3712 37.5377H17.878H20.7507H32.2575C34.9104 37.5377 37.0612 35.387 37.0612 32.7341V21.6204C37.0612 20.177 36.4252 18.8839 35.4189 18.004C36.4576 16.3895 37.0612 14.4666 37.0612 12.4046C37.0612 6.68274 32.4225 2.04427 26.7007 2.04427C24.6388 2.04427 22.7159 2.64776 21.1014 3.68647C20.2214 2.6802 18.9282 2.04427 17.4849 2.04427H6.3712Z"
+            fill="black" class="stroke-white dark:stroke-white/10" stroke-width="3.07552"></path>
+          <path
+            d="M9.56855 23.5001C8.8406 23.5001 8.25047 24.0902 8.25047 24.8182V29.5361C8.25047 30.2641 8.8406 30.8542 9.56855 30.8542H14.2864C15.0144 30.8542 15.6045 30.2641 15.6045 29.5361V24.8182C15.6045 24.0902 15.0143 23.5001 14.2864 23.5001H9.56855Z"
+            fill="#FF3270"></path>
+          <path
+            d="M24.3409 23.5001C23.613 23.5001 23.0228 24.0902 23.0228 24.8182V29.5361C23.0228 30.2641 23.613 30.8542 24.3409 30.8542H29.0588C29.7868 30.8542 30.3769 30.2641 30.3769 29.5361V24.8182C30.3769 24.0902 29.7868 23.5001 29.0588 23.5001H24.3409Z"
+            fill="#861FFF"></path>
+          <path
+            d="M9.56855 8.72815C8.8406 8.72815 8.25047 9.31827 8.25047 10.0462V14.7641C8.25047 15.4921 8.8406 16.0822 9.56855 16.0822H14.2864C15.0144 16.0822 15.6045 15.4921 15.6045 14.7641V10.0462C15.6045 9.31827 15.0143 8.72815 14.2864 8.72815H9.56855Z"
+            fill="#097EFF"></path>
+          <path
+            d="M26.6999 8.72815C24.6692 8.72815 23.0228 10.3744 23.0228 12.4052C23.0228 14.4359 24.6692 16.0822 26.6999 16.0822C28.7306 16.0822 30.3769 14.4359 30.3769 12.4052C30.3769 10.3744 28.7306 8.72815 26.6999 8.72815Z"
+            fill="#FFD702"></path>
+        </svg>
+        <span style="font-size: 24px;">Demo</span>
+      </a>
+    </div> -->
+
+    <h2 id="abstract" style="text-align: center;">Abstract<a name="abstract"></a></h2>
+
+    <p style="text-align: justify;text-indent: 2em;">Controllable speech synthesis refers to the precise
+ control of speaking style by manipulating specific prosodic and
+ paralinguistic attributes, such as gender, volume, speech rate,
+ pitch, and pitch fluctuation. With the integration of advanced
+ generative models, particularly large language models (LLMs)
+ and diffusion models, controllable text-to-speech (TTS) systems
+ have increasingly transitioned from label-based control to natural
+ language description-based control, which is typically imple
+mented by predicting global style embeddings from textual
+ prompts. However, this straightforward prediction overlooks the
+ underlying distribution of the style embeddings, which may
+ hinder the full potential of controllable TTS systems. In this
+ study, we use t-SNE analysis to visualize and analyze the global
+ style embedding distribution of various mainstream TTS systems,
+ revealing a clear hierarchical clustering pattern: embeddings first
+ cluster by timbre and subsequently subdivide into finer clusters
+ based on style attributes. Based on this observation, we propose
+ HiStyle, a two-stage style embedding predictor that Hierarchical
+ predicts style embeddings conditioned on textual prompts, and
+ further incorporate contrastive learning to help align the text
+ and audio embedding spaces. Additionally, we propose a style
+ annotation strategy that leverages the complementary strengths
+ of statistical methodologies and human auditory preferences
+ to generate more accurate and perceptually consistent textual
+ prompts for style control. Comprehensive experiments demon
+strate that when applied to the base TTS model, HiStyle achieves
+ significantly better style controllability than alternative style
+ embedding predicting approaches while preserving high speech
+ quality in terms of naturalness and intelligibility. 
+    </p>
+
+    <br><br>
+    <style>
+      /* 将 figure 元素设置为居中 */
+      figure {
+        text-align: center;
+        /* 内容居中对齐 */
+        margin: 0;
+        /* 移除默认外边距 */
+      }
+
+      /* 让图片保持其原始大小 */
+      img {
+        max-width: 100%;
+        /* 限制图片最大宽度以适应父容器 */
+        height: auto;
+        /* 保持高度自动 */
+      }
+
+      /* 设置 figcaption 的样式 */
+      figcaption {
+        margin-top: 8px;
+        /* 与图片之间的间距 */
+        font-size: 14px;
+        /* 说明文字的字体大小 */
+        color: #555;
+        /* 说明文字的颜色 */
+      }
+
+      .gallery {
+        display: flex;
+        justify-content: center;
+        /* 居中对齐 */
+        align-items: center;
+        flex-direction: column;
+        /* 垂直排列 */
+      }
+    </style>
+    <figure>
+      <img src="new.png" alt="model" style="width: 100%; max-width: 1600px;">
+      <figcaption>Fig.1 Overview architecture of the HiStyle embedding predictor. The subplot in the upper-left corner illustrates the prediction
+process of our first stage. The Speaker Embedding Predictor takes the text prompt embedding as a condition and uses the
+reference speaker embedding to predict the predicted speaker embedding. Similarly, the subplot in the lower-left corner
+represents the second stage, where the Style Embedding Predictor takes the text prompt embedding along with the residual
+connection of the intermediate result (predicted speaker embedding) from the first stage as conditions, and leverages the fusion
+embedding to predict the predicted style embedding. The subplot on the right depicts the detailed architecture and training
+process of the two Embedding Predictors.. </figcaption>
+    </figure>
+    <br><br>
+
+
+
+    <!-- <div class="toc">
+      <h3>Table of contents</h3>
+      <ul>
+        <li><a href="#Text-Prompt">Text-Prompt-Guided Controllable TTS</a></li>
+        <li><a href="#Style-Control">Style Prompt</a></li>
+      </ul>
+    </div> -->
+
+    
+    <h2 id="Text-Prompt" style="text-align: center;">Demos<a name="Text Prompt"></a></h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Target Text</th>
+          <th>Text Prompt</th>
+          <th>Histyle Predictor (proposed)</th>
+          <th>Vatiation Predictor<sup></sup></th>
+          <th>Query Encoder Predictor<sup></sup></th>
+        </tr>
+      </thead>
+      <tbody>
+
+        <tr>
+          <td rowspan="3" style="width: 500px; text-align: center; vertical-align: middle;font-size: 25px;">山无棱，天地合，才敢与君绝。</td>
+          <td class="prompt-text" style="width: 500px; text-align: center; vertical-align: middle;font-size: 20px;">这名男子以缓慢的语速高声说道 (This man spoke slowly but loudly.)</td>
+          <td><audio controls src="final_samples/0_1_1_1_M/1_codec.wav"></audio></td>
+          <td><audio controls src="audio/Fle/shan_1.wav"></audio></td>
+          <td><audio controls src="audio/PromptTTS2/shan_1.wav"></audio></td>
+        </tr>
+        <tr>
+          <td class="prompt-text" style="width: 500px; text-align: center; vertical-align: middle;font-size: 20px;">这位男子说话时音调起伏显著，声音却很轻。 (When this man spoke, his pitch fluctuated significantly, yet his voice was very soft.)</td>
+          <td><audio controls src="final_samples/1_1_1_2_M/4_codec.wav"></audio></td>
+          <td><audio controls src="audio/PromptTTS2/shan_2.wav"></audio></td>
+          <td><audio controls src="audio/Fle/shan_codec.wav"></audio></td>
+        </tr>
+        <tr>
+          <td class="prompt-text" style="width: 500px; text-align: center; vertical-align: middle;font-size: 20px;">这个女人用平静的语调和非常大的声音说着。 (This woman spoke in a calm tone and with a very loud voice.)</td>
+          <td><audio controls src="final_samples/1_2_1_1_F/4_codec.wav"></audio></td>
+          <td><audio controls src="audio/Fle/shan_codec_3.wav"></audio></td>
+          <td><audio controls src="audio/PromptTTS2/shan_codec_3.wav"></audio></td>
+        </tr>
+        <!---------------------------------------------------------------------------->
+
+        <tr>
+          <td rowspan="3" style="width: 500px; text-align: center; vertical-align: middle;font-size: 25px;">前方有左急转弯，请减速慢行。</td>
+          <td class="prompt-text" style="width: 500px; text-align: center; vertical-align: middle;font-size: 20px;">这位女性说话的音调很高但很平稳。 (Her tone was persistently high and stable throughout her speaking.)</td>
+          <td><audio controls src="final_samples/1_1_2_1_F/1_codec.wav"></audio></td>
+          <td><audio controls src="audio/Fle/qianfang_codec.wav"></audio></td>
+          <td><audio controls src="audio/PromptTTS2/qianfang_codec.wav"></audio></td>
+        </tr>
+        <tr>
+          <td class="prompt-text" style="width: 500px; text-align: center; vertical-align: middle;font-size: 20px;">这位女性说话音调很低，语速适中。 (She spoke in a low tone with a moderate speed.)</td>
+          <td><audio controls src="final_samples/1_1_0_1_F/1_codec.wav"></audio></td>
+          <td><audio controls src="audio/PromptTTS2/qianfang_codec_2.wav"></audio></td>
+          <td><audio controls src="audio/PromptTTS2/qianfang_codec_2.wav"></audio></td>
+        </tr>
+        <tr>
+          <td class="prompt-text" style="width: 500px; text-align: center; vertical-align: middle;font-size: 20px;">一个男人用低沉的音调和很大的音量说话。 (A man spoke in a deep tone and with a very loud voice.)</td>
+          <td><audio controls src="final_samples/1_1_0_1_M/1_codec.wav"></audio></td>
+          <td><audio controls src="audio/Fle/qianfang_codec_2.wav"></audio></td>
+          <td><audio controls src="audio/Fle/qianfang_codec_3.wav"></audio></td>
+        </tr>
+
+        <!---------------------------------------------------------------------------->
+
+        <tr>
+          <td rowspan="3" style="width: 500px; text-align: center; vertical-align: middle;font-size: 25px;">追到附近北一路一网吧时，该男子跑进网吧躲藏。</td>
+          <td class="prompt-text" style="width: 500px; text-align: center; vertical-align: middle;font-size: 20px;">这位女性说话的音调很高但很平稳。 (Her tone was persistently high and stable throughout her speaking.)</td>
+          <td><audio controls src="audio/Fle/zhuidao_codec_1.wav"></audio></td>
+          <td><audio controls src="audio/Fle/zhuidao_cod.wav"></audio></td>
+          <td><audio controls src="final_samples/1_1_2_1_F/3_codec.wav"></audio></td>
+        </tr>
+        <tr>
+          <td class="prompt-text" style="width: 500px; text-align: center; vertical-align: middle;font-size: 20px;">这位男性说话的音量极大。 (He spoke in a powerful volume.)</td>
+          <td><audio controls src="audio/PromptTTS2/zhuidao_codec_2.wav"></audio></td>
+          <td><audio controls src="audio/PromptTTS2/zhuidao_codec.wav"></audio></td>
+          <td><audio controls src="audio/Fle/zhuidao_code.wav"></audio></td>
+        </tr>
+        <tr>
+          <td class="prompt-text" style="width: 500px; text-align: center; vertical-align: middle;font-size: 20px;">这位女性说话音调很低，语速适中。 (She spoke in a low tone with a moderate speed.)</td>
+          <td><audio controls src="audio/Fle/zhuidao_codec.wav"></audio></td>
+          <td><audio controls src="audio/HiStyle/zhuidao_codec_copy.wav"></audio></td>
+          <td><audio controls src="audio/Fle/zhuidao_codec_3.wav"></audio></td>
+        </tr>
+        
+        <!---------------------------------------------------------------------------->
+
+        <tr>
+          <td rowspan="3" style="width: 500px; text-align: center; vertical-align: middle;font-size: 25px;">Hi there, how are you doing today?</td>
+          <td class="prompt-text" style="width: 500px; text-align: center; vertical-align: middle;font-size: 20px;">这位男性说话音调低沉、音量极大。 (He spoke in a low tone with a powerful volume.)</td>
+          <td><audio controls src="final_samples/1_1_0_1_M/overall_small_43_codec.wav"></audio></td>
+          <td><audio controls src="audio/PromptTTS2/Hi_1.wav"></audio></td>
+          <td><audio controls src="audio/Fle/Hi_1.wav"></audio></td>
+        </tr>
+        <tr>
+          <td class="prompt-text" style="width: 500px; text-align: center; vertical-align: middle;font-size: 20px;">这位女性说话的音调很高且语速很快。 (This woman spoke with a high pitch and at a fast pace.)</td>
+          <td><audio controls src="final_samples/1_1_2_1_F/overall_small_43_codec.wav"></audio></td>
+          <td><audio controls src="audio/PromptTTS2/Hi_2.wav"></audio></td>
+          <td><audio controls src="audio/Fle/Hi_2.wav"></audio></td>
+        </tr>
+        <tr>
+          <td class="prompt-text" style="width: 500px; text-align: center; vertical-align: middle;font-size: 20px;">这个女性语速很快。(This female speaks very fast.)</td>
+          <td><audio controls src="final_samples/2_1_1_1_F/Hi_codec.wav"></audio></td>
+          <td><audio controls src="audio/Fle/Hi_2.wav"></audio></td>
+          <td><audio controls src="audio/Fle/Hi.wav"></audio></td>
+        </tr>
+
+        <!---------------------------------------------------------------------------->
+
+        <tr>
+          <td rowspan="3" style="width: 500px; text-align: center; vertical-align: middle;font-size: 25px;">Could you please help me with my homework?</td>
+          <td class="prompt-text" style="width: 500px; text-align: center; vertical-align: middle;font-size: 20px;">一个男人说话声音很大同时语调变化很大。(A man spoke with a very loud voice and highly varied intonation.)</td>
+          <td><audio controls src="audio/could/M_1.wav"></audio></td>
+          <td><audio controls src="audio/HiStyle/Could_codec1.wav"></audio></td>
+          <td><audio controls src="audio/HiStyle/Could_codec.wav"></audio></td>
+        </tr>
+        <tr>
+          <td class="prompt-text" style="width: 500px; text-align: center; vertical-align: middle;font-size: 20px;">这位女性说话时语调很高，语速较快。(The woman spoke with a high pitch and a relatively fast speaking rate.)</td>
+          <td><audio controls src="audio/could/F_pitch.wav"></audio></td>
+          <td><audio controls src="audio/could/FF.wav"></audio></td>
+          <td><audio controls src="audio/could/F_2.wav"></audio></td>
+        </tr>
+        <tr>
+          <td class="prompt-text" style="width: 500px; text-align: center; vertical-align: middle;font-size: 20px;">这个男生用很平稳的语调说话。(The man spoke in a very smooth tone.)</td>
+          <td><audio controls src="audio/could/M_3.wav"></audio></td>
+          <td><audio controls src="audio/could/M_3_2.wav"></audio></td>
+          <td><audio controls src="audio/could/M_3_1.wav"></audio></td>
+        </tr>
+
+
+
+      </tbody>
+    </table>
+    
+
+    <head>
+  <meta charset="UTF-8">
+  <title>XEmoRAG Attribute Table Demo</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      padding: 40px;
+      background-color: #f9f9f9;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background: white;
+    }
+    th, td {
+      border: 1px solid #ccc;
+      padding: 10px;
+      vertical-align: top;
+      text-align: center;
+    }
+    th {
+      background-color: #f0f0f0;
+    }
+    /* make the two audio‐cells sit side by side */
+    .audio-grid {
+      display: flex;
+      width: 100%;
+      gap: 20px;
+    }
+    .audio-cell {
+      flex: 0 0 48%;
+      background: #fff;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+    }
+    .audio-cell strong {
+      display: block;
+      margin-bottom: 8px;
+      text-align: left;
+    }
+    .audio-cell audio {
+      width: 100%;
+      margin-bottom: 4px;
+    }
+    .audio-cell p {
+      margin: 0 0 12px;
+      text-align: left;
+      font-size: 14px;
+    }
+  </style>
+</head>
+
+
+<body>
+    
+  </section>
+</body>
+
+
+
+
+
+
+</html>
