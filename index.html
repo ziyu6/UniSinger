@@ -28,40 +28,40 @@
 
   <section class="main-content">
     <h1 id="">
-      <center>Towards Unified Song Generation and Singing Voice Conversion with Accompaniment Co-Generation</center>
+      <center>UniSinger: Towards Unified Timbre-Controllable Song Generation and Accompaniment-Coordinated Singing Voice Conversion</center>
     </h1>
 
-    <center> Hanzhao Li<sup>1</sup>, Liumeng Xue<sup>2</sup>, Haohan Guo<sup>3</sup>, Xinfa Zhu<sup>1</sup>, Yuanjun Lv<sup>1</sup>,  Lei Xie<sup>1</sup> </center>
-    <center>  Yunlin Chen<sup>4</sup>,  Hao Yin<sup>4</sup>,  Zhifei Li<sup>4</sup> </center>
+    <!-- <center> Hanzhao Li<sup>1</sup>, Liumeng Xue<sup>2</sup>, Haohan Guo<sup>3</sup>, Xinfa Zhu<sup>1</sup>, Yuanjun Lv<sup>1</sup>,  Lei Xie<sup>1</sup> </center>
+    <center>  Yunlin Chen<sup>4</sup>,  Hao Yin<sup>4</sup>,  Zhifei Li<sup>4</sup> </center> -->
 
-    <p></p>
+    <!-- <p></p> -->
       
-    <center> <sup>1</sup>Audio, Speech and Language Processing Group (ASLP@NPU), School of Computer Science, Northwestern Polytechnical University, Xi'an, China<br /></center>
+    <!-- <center> <sup>1</sup>Audio, Speech and Language Processing Group (ASLP@NPU), School of Computer Science, Northwestern Polytechnical University, Xi'an, China<br /></center>
     <center> <sup>2</sup>School of Data Science, The Chinese University of Hong Kong, Shenzhen (CUHK-Shenzhen), China</center>
     <center> <sup>3</sup>The Chinese University of Hong Kong, Hong Kong SAR, China</center>
-    <center> <sup>4</sup>Shanghai Mobvoi Information Technology Co., Ltd</center>
+    <center> <sup>4</sup>Shanghai Mobvoi Information Technology Co., Ltd</center> -->
 
     <h2>0. Contents</h2>
     <ol>
       <li><a href="#abstract">Abstract</a></li>
-      <li><a href="#Ablation">Samples on Audio Reconstruction: Ablation Study </a></li>
-      <li><a href="#Reconstruction">Samples on Audio Reconstruction: Comparison Study </a></li>
-      <li><a href="#TTS">Audio Samples: VALL-E Zero-shot TTS based on differenct codecs </a></li>
+      <li><a href="#Ablation">Samples on Song Generation </a></li>
+      <li><a href="#Reconstruction">Samples on Sing Voice Conversion</a></li>
+      <!-- <li><a href="#TTS">Audio Samples: VALL-E Zero-shot TTS based on differenct codecs </a></li> -->
     </ol>
 
     <br><br>
     <h2 id="abstract">1. Abstract<a name="abstract"></a></h2>
-    <p> The multi-codebook speech codec enables the application of large language models (LLM) in TTS but bottlenecks efficiency and robustness due to multi-sequence prediction. To avoid this obstacle, we propose Single-Codec, a single-codebook single-sequence codec, which employs a disentangled VQ-VAE to decouple speech into a time-invariant embedding and a phonetically-rich discrete sequence. Furthermore, the encoder is enhanced with 1) contextual modeling with a BLSTM module to exploit the temporal information, 2) a hybrid sampling module to alleviate distortion from upsampling and downsampling, and 3) a resampling module to encourage discrete units to carry more phonetic information. Compared with multi-codebook codecs, e.g., EnCodec and TiCodec, Single-Codec demonstrates higher reconstruction quality with a lower bandwidth of only 304bps. The effectiveness of Single-Code is further validated by LLM-TTS experiments, showing improved naturalness and intelligibility.
+    <p> While Song Generation and Singing Voice Conversion (SVC) have witnessed significant advancements, they have long been developed under isolated paradigms: the former lacks zero-shot timbre cloning capabilities, while the latter overlooks the acoustic synergy between vocals and accompaniment. To bridge this gap, we propose the first end-to-end framework unifying Timbre-Controllable Song Generation and Accompaniment-Coordinated SVC. Building upon the Multimodal Diffusion Transformer (MMDiT) architecture, we construct a cross-task Unified Vocal Timbre Space. By seamlessly transferring disentangled timbre features from SVC task to Song Generation task, this design endows the latter with unprecedented zero-shot timbre cloning capabilities. Furthermore, to mitigate multi-task optimization conflicts, we design a Progressive Curriculum Training strategy. By employing Task-Specific Modality Masking to construct information bottlenecks, we guide the model to progressively decouple and master the generative mechanics of semantic content, vocal timbre, and accompaniment. Experimental results demonstrate that our framework not only achieves State-of-The-Art performance on foundational tasks but also realizes breakthrough capabilities in Timbre-Controllable Song Generation and Accompaniment-Coordinated SVC, offering new possibilities for intelligent music production.
     </p>
 
     <!-- <br><br> -->
 
-    <center><img src='fig/model.png' style="width: auto;height: auto;max-width: 30%;"></center>
-    <div align="center"><b>Fig.1</b> The architecture of Single-Codec.</div>
+    <center><img src='111.png' style="width: auto;height: auto;max-width: 80%;"></center>
+    <div align="center"><b>Fig.1</b> The architecture of UniSinger.</div>
 
     <!-- <br><br> -->
 
-    <h2 id="Ablation">2. Samples on Audio Reconstruction: Ablation Study <a name="Ablation"></a></h2>
+    <h2 id="Ablation">2. Samples on Song Generation <a name="Ablation"></a></h2>
 
     <table>
       <tr>
@@ -88,7 +88,7 @@
       <td><audio controls><source src="demos/codec_GT/SSB10200002.wav" type="audio/wav"></audio></td><td><audio controls><source src="demos/codec_VQVAE/SSB10200002.wav" type="audio/wav"></audio></td><td><audio controls><source src="demos/codec_Ref-short/SSB10200002.wav" type="audio/wav"></audio></td><td><audio controls><source src="demos/codec_Ref-long/SSB10200002.wav" type="audio/wav"></audio></td><td><audio controls><source src="demos/codec_Ref-BLSTM/SSB10200002.wav" type="audio/wav"></audio></td><td><audio controls><source src="demos/codec_Ref-HybSam/SSB10200002.wav" type="audio/wav"></audio></td><td><audio controls><source src="demos/codec_Ref-BLSTM-HybSam/SSB10200002.wav" type="audio/wav"></audio></td><td><audio controls><source src="demos/codec_Ref-BLSTM-HybSam-Conf/SSB10200002.wav" type="audio/wav"></audio></td><td><audio controls><source src="demos/codec_Single-Codec/SSB10200002.wav" type="audio/wav"></audio></td></tr>
       </table>
       
-      <h2 id="Reconstruction">3. Samples on Audio Reconstruction: Comparison Study <a name="Reconstruction"></a></h2>
+      <h2 id="Reconstruction">3. Samples on Sing Voice Conversion <a name="Reconstruction"></a></h2>
 
       <table>
         <tr>
@@ -118,7 +118,7 @@
         </table>
         
 
-      <h2 id="TTS">4. Audio Samples: VALL-E Zero-shot TTS based on different codecs <a name="TTS"></a></h2>
+      <!-- <h2 id="TTS">4. Audio Samples: VALL-E Zero-shot TTS based on different codecs <a name="TTS"></a></h2>
 
       <table>
         <tr>
@@ -155,7 +155,7 @@
         <tr><td colspan="6">The man let me have him for my silver chain.</td></tr><td><audio controls><source src="demos/tts_VQVAE/SSB13650221-libritts_7046-85651_000040_000003.wav" type="audio/wav"></audio></td><td><audio controls><source src="demos/tts_EnCodec-1VQ/SSB13650221-libritts_7046-85651_000040_000003.wav" type="audio/wav"></audio></td><td><audio controls><source src="demos/tts_EnCodec-4VQ/SSB13650221-libritts_7046-85651_000040_000003.wav" type="audio/wav"></audio></td><td><audio controls><source src="demos/tts_EnCodec-8VQ/SSB13650221-libritts_7046-85651_000040_000003.wav" type="audio/wav"></audio></td><td><audio controls><source src="demos/tts_TiCodec-1VQ/SSB13650221-libritts_7046-85651_000040_000003.wav" type="audio/wav"></audio></td><td><audio controls><source src="demos/tts_Single-Codec/SSB13650221-libritts_7046-85651_000040_000003.wav" type="audio/wav"></audio></td></tr>
         <tr>
         <tr><td colspan="6">而在基金销售市场发挥的作用越来越大</td></tr><td><audio controls><source src="demos/tts_VQVAE/SSB13650221-SSB14310340.wav" type="audio/wav"></audio></td><td><audio controls><source src="demos/tts_EnCodec-1VQ/SSB13650221-SSB14310340.wav" type="audio/wav"></audio></td><td><audio controls><source src="demos/tts_EnCodec-4VQ/SSB13650221-SSB14310340.wav" type="audio/wav"></audio></td><td><audio controls><source src="demos/tts_EnCodec-8VQ/SSB13650221-SSB14310340.wav" type="audio/wav"></audio></td><td><audio controls><source src="demos/tts_TiCodec-1VQ/SSB13650221-SSB14310340.wav" type="audio/wav"></audio></td><td><audio controls><source src="demos/tts_Single-Codec/SSB13650221-SSB14310340.wav" type="audio/wav"></audio></td></tr>
-        </table>
+        </table> -->
         
     <footer class="site-footer">
 
