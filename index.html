@@ -63,99 +63,299 @@
 
     <h2 id="Ablation">2. Samples on Song Generation <a name="Ablation"></a></h2>
 
+    <style>
+      table {
+        border-collapse: collapse;
+        width: 100%;
+        margin: 20px 0;
+      }
+      th, td {
+        border-bottom: 1px solid #ddd;
+        padding: 15px;
+        text-align: left;
+        vertical-align: top;
+      }
+      th {
+        background-color: #f2f2f2;
+        font-weight: bold;
+      }
+      tr:hover {
+        background-color: #f5f5f5;
+      }
+    </style>
+
     <table>
-      <tr>
-      <th>GT</th><th>VQVAE</th><th>Ref-short</th><th>Ref-long</th><th>Ref-BLSTM</th><th>Ref-HybSam</th><th>Ref-BLSTM-HybSam</th><th>Ref-BLSTM-HybSam-Conf</th><th>Single-Codec</th></tr>
-      <tr>
-      <td><audio controls><source src="demos/codec_GT/BAC009S0740W0139.wav" type="audio/wav"></audio></td><td><audio controls><source src="demos/codec_VQVAE/BAC009S0740W0139.wav" type="audio/wav"></audio></td><td><audio controls><source src="demos/codec_Ref-short/BAC009S0740W0139.wav" type="audio/wav"></audio></td><td><audio controls><source src="demos/codec_Ref-long/BAC009S0740W0139.wav" type="audio/wav"></audio></td><td><audio controls><source src="demos/codec_Ref-BLSTM/BAC009S0740W0139.wav" type="audio/wav"></audio></td><td><audio controls><source src="demos/codec_Ref-HybSam/BAC009S0740W0139.wav" type="audio/wav"></audio></td><td><audio controls><source src="demos/codec_Ref-BLSTM-HybSam/BAC009S0740W0139.wav" type="audio/wav"></audio></td><td><audio controls><source src="demos/codec_Ref-BLSTM-HybSam-Conf/BAC009S0740W0139.wav" type="audio/wav"></audio></td><td><audio controls><source src="demos/codec_Single-Codec/BAC009S0740W0139.wav" type="audio/wav"></audio></td></tr>
-      <tr>
-      <td><audio controls><source src="demos/codec_GT/BAC009S0740W0170.wav" type="audio/wav"></audio></td><td><audio controls><source src="demos/codec_VQVAE/BAC009S0740W0170.wav" type="audio/wav"></audio></td><td><audio controls><source src="demos/codec_Ref-short/BAC009S0740W0170.wav" type="audio/wav"></audio></td><td><audio controls><source src="demos/codec_Ref-long/BAC009S0740W0170.wav" type="audio/wav"></audio></td><td><audio controls><source src="demos/codec_Ref-BLSTM/BAC009S0740W0170.wav" type="audio/wav"></audio></td><td><audio controls><source src="demos/codec_Ref-HybSam/BAC009S0740W0170.wav" type="audio/wav"></audio></td><td><audio controls><source src="demos/codec_Ref-BLSTM-HybSam/BAC009S0740W0170.wav" type="audio/wav"></audio></td><td><audio controls><source src="demos/codec_Ref-BLSTM-HybSam-Conf/BAC009S0740W0170.wav" type="audio/wav"></audio></td><td><audio controls><source src="demos/codec_Single-Codec/BAC009S0740W0170.wav" type="audio/wav"></audio></td></tr>
-      <tr>
-      <td><audio controls><source src="demos/codec_GT/BAC009S0740W0211.wav" type="audio/wav"></audio></td><td><audio controls><source src="demos/codec_VQVAE/BAC009S0740W0211.wav" type="audio/wav"></audio></td><td><audio controls><source src="demos/codec_Ref-short/BAC009S0740W0211.wav" type="audio/wav"></audio></td><td><audio controls><source src="demos/codec_Ref-long/BAC009S0740W0211.wav" type="audio/wav"></audio></td><td><audio controls><source src="demos/codec_Ref-BLSTM/BAC009S0740W0211.wav" type="audio/wav"></audio></td><td><audio controls><source src="demos/codec_Ref-HybSam/BAC009S0740W0211.wav" type="audio/wav"></audio></td><td><audio controls><source src="demos/codec_Ref-BLSTM-HybSam/BAC009S0740W0211.wav" type="audio/wav"></audio></td><td><audio controls><source src="demos/codec_Ref-BLSTM-HybSam-Conf/BAC009S0740W0211.wav" type="audio/wav"></audio></td><td><audio controls><source src="demos/codec_Single-Codec/BAC009S0740W0211.wav" type="audio/wav"></audio></td></tr>
-      <tr>
-      <td><audio controls><source src="demos/codec_GT/libritts_895-136366_000007_000003.wav" type="audio/wav"></audio></td><td><audio controls><source src="demos/codec_VQVAE/libritts_895-136366_000007_000003.wav" type="audio/wav"></audio></td><td><audio controls><source src="demos/codec_Ref-short/libritts_895-136366_000007_000003.wav" type="audio/wav"></audio></td><td><audio controls><source src="demos/codec_Ref-long/libritts_895-136366_000007_000003.wav" type="audio/wav"></audio></td><td><audio controls><source src="demos/codec_Ref-BLSTM/libritts_895-136366_000007_000003.wav" type="audio/wav"></audio></td><td><audio controls><source src="demos/codec_Ref-HybSam/libritts_895-136366_000007_000003.wav" type="audio/wav"></audio></td><td><audio controls><source src="demos/codec_Ref-BLSTM-HybSam/libritts_895-136366_000007_000003.wav" type="audio/wav"></audio></td><td><audio controls><source src="demos/codec_Ref-BLSTM-HybSam-Conf/libritts_895-136366_000007_000003.wav" type="audio/wav"></audio></td><td><audio controls><source src="demos/codec_Single-Codec/libritts_895-136366_000007_000003.wav" type="audio/wav"></audio></td></tr>
-      <tr>
-      <td><audio controls><source src="demos/codec_GT/libritts_1795-142410_000005_000000.wav" type="audio/wav"></audio></td><td><audio controls><source src="demos/codec_VQVAE/libritts_1795-142410_000005_000000.wav" type="audio/wav"></audio></td><td><audio controls><source src="demos/codec_Ref-short/libritts_1795-142410_000005_000000.wav" type="audio/wav"></audio></td><td><audio controls><source src="demos/codec_Ref-long/libritts_1795-142410_000005_000000.wav" type="audio/wav"></audio></td><td><audio controls><source src="demos/codec_Ref-BLSTM/libritts_1795-142410_000005_000000.wav" type="audio/wav"></audio></td><td><audio controls><source src="demos/codec_Ref-HybSam/libritts_1795-142410_000005_000000.wav" type="audio/wav"></audio></td><td><audio controls><source src="demos/codec_Ref-BLSTM-HybSam/libritts_1795-142410_000005_000000.wav" type="audio/wav"></audio></td><td><audio controls><source src="demos/codec_Ref-BLSTM-HybSam-Conf/libritts_1795-142410_000005_000000.wav" type="audio/wav"></audio></td><td><audio controls><source src="demos/codec_Single-Codec/libritts_1795-142410_000005_000000.wav" type="audio/wav"></audio></td></tr>
-      <tr>
-      <td><audio controls><source src="demos/codec_GT/libritts_2506-11278_000007_000007.wav" type="audio/wav"></audio></td><td><audio controls><source src="demos/codec_VQVAE/libritts_2506-11278_000007_000007.wav" type="audio/wav"></audio></td><td><audio controls><source src="demos/codec_Ref-short/libritts_2506-11278_000007_000007.wav" type="audio/wav"></audio></td><td><audio controls><source src="demos/codec_Ref-long/libritts_2506-11278_000007_000007.wav" type="audio/wav"></audio></td><td><audio controls><source src="demos/codec_Ref-BLSTM/libritts_2506-11278_000007_000007.wav" type="audio/wav"></audio></td><td><audio controls><source src="demos/codec_Ref-HybSam/libritts_2506-11278_000007_000007.wav" type="audio/wav"></audio></td><td><audio controls><source src="demos/codec_Ref-BLSTM-HybSam/libritts_2506-11278_000007_000007.wav" type="audio/wav"></audio></td><td><audio controls><source src="demos/codec_Ref-BLSTM-HybSam-Conf/libritts_2506-11278_000007_000007.wav" type="audio/wav"></audio></td><td><audio controls><source src="demos/codec_Single-Codec/libritts_2506-11278_000007_000007.wav" type="audio/wav"></audio></td></tr>
-      <tr>
-      <td><audio controls><source src="demos/codec_GT/libritts_5139-61422_000009_000000.wav" type="audio/wav"></audio></td><td><audio controls><source src="demos/codec_VQVAE/libritts_5139-61422_000009_000000.wav" type="audio/wav"></audio></td><td><audio controls><source src="demos/codec_Ref-short/libritts_5139-61422_000009_000000.wav" type="audio/wav"></audio></td><td><audio controls><source src="demos/codec_Ref-long/libritts_5139-61422_000009_000000.wav" type="audio/wav"></audio></td><td><audio controls><source src="demos/codec_Ref-BLSTM/libritts_5139-61422_000009_000000.wav" type="audio/wav"></audio></td><td><audio controls><source src="demos/codec_Ref-HybSam/libritts_5139-61422_000009_000000.wav" type="audio/wav"></audio></td><td><audio controls><source src="demos/codec_Ref-BLSTM-HybSam/libritts_5139-61422_000009_000000.wav" type="audio/wav"></audio></td><td><audio controls><source src="demos/codec_Ref-BLSTM-HybSam-Conf/libritts_5139-61422_000009_000000.wav" type="audio/wav"></audio></td><td><audio controls><source src="demos/codec_Single-Codec/libritts_5139-61422_000009_000000.wav" type="audio/wav"></audio></td></tr>
-      <tr>
-      <td><audio controls><source src="demos/codec_GT/SSB00570312.wav" type="audio/wav"></audio></td><td><audio controls><source src="demos/codec_VQVAE/SSB00570312.wav" type="audio/wav"></audio></td><td><audio controls><source src="demos/codec_Ref-short/SSB00570312.wav" type="audio/wav"></audio></td><td><audio controls><source src="demos/codec_Ref-long/SSB00570312.wav" type="audio/wav"></audio></td><td><audio controls><source src="demos/codec_Ref-BLSTM/SSB00570312.wav" type="audio/wav"></audio></td><td><audio controls><source src="demos/codec_Ref-HybSam/SSB00570312.wav" type="audio/wav"></audio></td><td><audio controls><source src="demos/codec_Ref-BLSTM-HybSam/SSB00570312.wav" type="audio/wav"></audio></td><td><audio controls><source src="demos/codec_Ref-BLSTM-HybSam-Conf/SSB00570312.wav" type="audio/wav"></audio></td><td><audio controls><source src="demos/codec_Single-Codec/SSB00570312.wav" type="audio/wav"></audio></td></tr>
-      <tr>
-      <td><audio controls><source src="demos/codec_GT/SSB00570352.wav" type="audio/wav"></audio></td><td><audio controls><source src="demos/codec_VQVAE/SSB00570352.wav" type="audio/wav"></audio></td><td><audio controls><source src="demos/codec_Ref-short/SSB00570352.wav" type="audio/wav"></audio></td><td><audio controls><source src="demos/codec_Ref-long/SSB00570352.wav" type="audio/wav"></audio></td><td><audio controls><source src="demos/codec_Ref-BLSTM/SSB00570352.wav" type="audio/wav"></audio></td><td><audio controls><source src="demos/codec_Ref-HybSam/SSB00570352.wav" type="audio/wav"></audio></td><td><audio controls><source src="demos/codec_Ref-BLSTM-HybSam/SSB00570352.wav" type="audio/wav"></audio></td><td><audio controls><source src="demos/codec_Ref-BLSTM-HybSam-Conf/SSB00570352.wav" type="audio/wav"></audio></td><td><audio controls><source src="demos/codec_Single-Codec/SSB00570352.wav" type="audio/wav"></audio></td></tr>
-      <tr>
-      <td><audio controls><source src="demos/codec_GT/SSB10200002.wav" type="audio/wav"></audio></td><td><audio controls><source src="demos/codec_VQVAE/SSB10200002.wav" type="audio/wav"></audio></td><td><audio controls><source src="demos/codec_Ref-short/SSB10200002.wav" type="audio/wav"></audio></td><td><audio controls><source src="demos/codec_Ref-long/SSB10200002.wav" type="audio/wav"></audio></td><td><audio controls><source src="demos/codec_Ref-BLSTM/SSB10200002.wav" type="audio/wav"></audio></td><td><audio controls><source src="demos/codec_Ref-HybSam/SSB10200002.wav" type="audio/wav"></audio></td><td><audio controls><source src="demos/codec_Ref-BLSTM-HybSam/SSB10200002.wav" type="audio/wav"></audio></td><td><audio controls><source src="demos/codec_Ref-BLSTM-HybSam-Conf/SSB10200002.wav" type="audio/wav"></audio></td><td><audio controls><source src="demos/codec_Single-Codec/SSB10200002.wav" type="audio/wav"></audio></td></tr>
-      </table>
-      
+  <thead>
+    <tr>
+      <th style="text-align: center;">Instruction</th>
+      <th style="text-align: center;">Transcript</th>
+      <th style="text-align: center;">Reference Audio</th>
+      <th style="text-align: center;">Synthesis Audio</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left; vertical-align: middle;">
+        <b>genre:</b> The genre of music is hip hop.<br><br>
+        <b>instrumentation:</b> The instruments used in the music piece include a drum machine, a synthesizer, and a bass guitar.<br><br>
+        <b>singer:</b> The music is performed by one singer. The singer is male, in his 20s, with a confident and energetic tone.<br><br>
+        <b>rhythm and melody:</b> The tempo is 100 BPM, and the key signature is G major. The melody is characterized by a strong, rhythmic beat and a catchy, repetitive hook.<br><br>
+        <b>mood and atmosphere:</b> The music feels like a lively, upbeat party scene. The combination of the confident male vocals, the driving drum machine beat, and the catchy synth melody creates a sense of excitement and energy, as if the singer is inviting the listener to join in the fun."</td>
+      <td style="text-align: left; vertical-align: middle;">I thought I better hurry up before I busted a grooveI leaned down to kiss her but then out of the blueA door slammed and a voice said baby where are you.</td>
+      <td style="text-align: center; vertical-align: middle;">
+        <audio controls><source src="demos/song/1_ref.wav" type="audio/wav"></audio>
+      </td>
+      <td style="text-align: center; vertical-align: middle;">
+        <audio controls><source src="demos/song/1.wav" type="audio/wav"></audio>
+      </td>
+    </tr>
+    
+    <tr>
+      <td style="text-align: left; vertical-align: middle;">
+        <b>genre:</b> The genre of music is soul and blues.<br><br>
+        <b></b>instrumentation:</b> The instruments used in the music piece include a guitar, a bass, a piano, and a drum set.<br><br>
+        <b>singer:</b> The music is performed by one singer. The singer is a male in his 40s. The tone of the singer is soulful and emotional.<br><br>
+        <b>rhythm and melody:</b> The tempo is moderate, around 75 BPM. The key signature is F minor.<br><br>
+        <b>mood and atmosphere:</b> The music evokes a sense of melancholy and introspection. The soulful guitar riffs and the bluesy piano chords create a somber atmosphere, while the singer's emotional tone adds a layer of vulnerability and longing. The overall mood is reminiscent of a rainy day, with the music acting as a soothing balm for the listener's soul.</td>
+      <td style="text-align: left; vertical-align: middle;">What you let me do what I want to you</td>
+      <td style="text-align: center; vertical-align: middle;">
+        <audio controls><source src="demos/song/3_ref.wav" type="audio/wav"></audio>
+      </td>
+      <td style="text-align: center; vertical-align: middle;">
+        <audio controls><source src="demos/song/3.wav" type="audio/wav"></audio>
+      </td>
+    </tr>
+
+    <tr>
+      <td style="text-align: left; vertical-align: middle;">
+      <b>genre:</b> The genre of music is hip-hop.<br><br>
+      <b>instrumentation:</b> The instruments used in the music piece include a drum machine, synthesizer, and a male rapper.<br><br>
+      <b>singer:</b> The music is performed by one singer. The singer is a male rapper in his 20s with a confident and energetic tone.<br><br>
+      <b>rhythm and melody:</b> The tempo is fast and upbeat, with a strong 4/4 time signature. The key signature is F# minor.<br><br>
+      <b>mood and atmosphere:</b> The music feels like a high-energy, celebratory moment. The rhythmic drum machine and synthesizer create a driving beat, while the rapper's confident tone and lyrics evoke a sense of triumph and excitement. The overall atmosphere is one of celebration and victory, as if the rapper is toasting to a hard-fought win.</td>
+      <td style="text-align: left; vertical-align: middle;">Say when  in the wind  we goWe toast  to the game  no games  we both  really grown</td>
+      <td style="text-align: center; vertical-align: middle;">
+        <audio controls><source src="demos/song/2_ref.wav" type="audio/wav"></audio>
+      </td>
+      <td style="text-align: center; vertical-align: middle;">
+        <audio controls><source src="demos/song/2.wav" type="audio/wav"></audio>
+      </td>
+    </tr>
+
+
+    <tr>
+      <td style="text-align: left; vertical-align: middle;">
+        <b>genre:</b> The genre of music is classical.<br><br>
+        <b>instrumentation:</b> The instruments used in the music piece include a piano and a female voice.<br><br>
+        <b>singer:</b> The music is performed by one singer. The singer is a female in her late teens to early twenties. Her tone is soft and ethereal.<br><br>
+        <b>rhythm and melody:</b> The tempo is moderate, with a steady and flowing rhythm. The key signature is D major.<br><br>
+        <b>mood and atmosphere:</b> The music evokes a sense of tranquility and introspection. The soft piano and the ethereal female voice create a dreamlike atmosphere, as if the listener is floating on a cloud. The combination of the gentle melody and the subtle dynamics of the performance invite the listener to lose themselves in a peaceful and reflective state.</td>
+      <td style="text-align: left; vertical-align: middle;">Each restless heart beats so imperfectly</td>
+      <td style="text-align: center; vertical-align: middle;">
+        <audio controls><source src="demos/song/6_ref.wav" type="audio/wav"></audio>
+      </td>
+      <td style="text-align: center; vertical-align: middle;">
+        <audio controls><source src="demos/song/6.wav" type="audio/wav"></audio>
+      </td>
+    </tr>
+
+    <tr>
+      <td style="text-align: left; vertical-align: middle;">
+        <b>genre:</b> The genre of music is classical.<br><br>
+        <b>instrumentation:</b> The instruments used in the music piece include a piano and a choir.<br><br>
+        <b>singer:</b> The music is performed by one singer. The singer is a male in his 30s. The tone of the singer is passionate and emotive.<br><br>
+        <b>rhythm and melody:</b> The tempo is moderate, with a steady and flowing rhythm. The key signature is A major.<br><br>
+        <b>mood and atmosphere:</b> The music evokes a sense of reverence and solemnity. The combination of the piano's gentle melody and the choir's harmonious voices creates a profound and uplifting atmosphere, reminiscent of a spiritual or ceremonial moment.</td>
+      <td style="text-align: left; vertical-align: middle;"> 哦亲爱的党 为了民族的兴旺</td>
+      <td style="text-align: center; vertical-align: middle;">
+        <audio controls><source src="demos/song/4_ref.wav" type="audio/wav"></audio>
+      </td>
+      <td style="text-align: center; vertical-align: middle;">
+        <audio controls><source src="demos/song/4.wav" type="audio/wav"></audio>
+      </td>
+    </tr>
+
+    <tr>
+      <td style="text-align: left; vertical-align: middle;">
+        <b>genre:</b> The genre of music is pop.<br><br>
+        <b>instrumentation:</b> The instruments used in the music piece include a piano, synthesizer, and a drum machine.<br><br>
+        <b>singer:</b> The music is performed by one female singer. The singer is in her 40s with a warm and soothing tone.<br><br>
+        <b>rhythm and melody:</b> The tempo is moderate, around 140.0 bpm. The key signature is A minor.<br><br>
+        <b>mood and atmosphere:</b> The music evokes a sense of nostalgia and warmth, like a gentle rain on a quiet evening. The soft piano and synthesizer melodies blend harmoniously with the singer's soothing voice, creating an atmosphere of comfort and reflection.</td>
+      <td style="text-align: left; vertical-align: middle;">一生一世把我爱在心窝</td>
+      <td style="text-align: center; vertical-align: middle;">
+        <audio controls><source src="demos/song/5_ref.wav" type="audio/wav"></audio>
+      </td>
+      <td style="text-align: center; vertical-align: middle;">
+        <audio controls><source src="demos/song/5.wav" type="audio/wav"></audio>
+      </td>
+    </tr>
+
+
+  </tbody>
+</table>
+
       <h2 id="Reconstruction">3. Samples on Sing Voice Conversion <a name="Reconstruction"></a></h2>
 
-      <table>
-        <tr>
-        <th>GT</th><th>VQVAE</th><th>EnCodec-1VQ</th><th>TiCodec-1VQ</th><th>TiCodec-2VQ</th><th>Single-Codec</th></tr>
-        <tr>
-        <td><audio controls><source src="demos/codec_GT/BAC009S0008W0190.wav" type="audio/wav"></audio></td><td><audio controls><source src="demos/codec_VQVAE/BAC009S0008W0190.wav" type="audio/wav"></audio></td><td><audio controls><source src="demos/codec_EnCodec-1VQ/BAC009S0008W0190.wav" type="audio/wav"></audio></td><td><audio controls><source src="demos/codec_TiCodec-1VQ/BAC009S0008W0190.wav" type="audio/wav"></audio></td><td><audio controls><source src="demos/codec_TiCodec-2VQ/BAC009S0008W0190.wav" type="audio/wav"></audio></td><td><audio controls><source src="demos/codec_Single-Codec/BAC009S0008W0190.wav" type="audio/wav"></audio></td></tr>
-        <tr>
-        <td><audio controls><source src="demos/codec_GT/BAC009S0740W0183.wav" type="audio/wav"></audio></td><td><audio controls><source src="demos/codec_VQVAE/BAC009S0740W0183.wav" type="audio/wav"></audio></td><td><audio controls><source src="demos/codec_EnCodec-1VQ/BAC009S0740W0183.wav" type="audio/wav"></audio></td><td><audio controls><source src="demos/codec_TiCodec-1VQ/BAC009S0740W0183.wav" type="audio/wav"></audio></td><td><audio controls><source src="demos/codec_TiCodec-2VQ/BAC009S0740W0183.wav" type="audio/wav"></audio></td><td><audio controls><source src="demos/codec_Single-Codec/BAC009S0740W0183.wav" type="audio/wav"></audio></td></tr>
-        <tr>
-        <td><audio controls><source src="demos/codec_GT/BAC009S0740W0211.wav" type="audio/wav"></audio></td><td><audio controls><source src="demos/codec_VQVAE/BAC009S0740W0211.wav" type="audio/wav"></audio></td><td><audio controls><source src="demos/codec_EnCodec-1VQ/BAC009S0740W0211.wav" type="audio/wav"></audio></td><td><audio controls><source src="demos/codec_TiCodec-1VQ/BAC009S0740W0211.wav" type="audio/wav"></audio></td><td><audio controls><source src="demos/codec_TiCodec-2VQ/BAC009S0740W0211.wav" type="audio/wav"></audio></td><td><audio controls><source src="demos/codec_Single-Codec/BAC009S0740W0211.wav" type="audio/wav"></audio></td></tr>
-        <tr>
-        <td><audio controls><source src="demos/codec_GT/BAC009S0740W0234.wav" type="audio/wav"></audio></td><td><audio controls><source src="demos/codec_VQVAE/BAC009S0740W0234.wav" type="audio/wav"></audio></td><td><audio controls><source src="demos/codec_EnCodec-1VQ/BAC009S0740W0234.wav" type="audio/wav"></audio></td><td><audio controls><source src="demos/codec_TiCodec-1VQ/BAC009S0740W0234.wav" type="audio/wav"></audio></td><td><audio controls><source src="demos/codec_TiCodec-2VQ/BAC009S0740W0234.wav" type="audio/wav"></audio></td><td><audio controls><source src="demos/codec_Single-Codec/BAC009S0740W0234.wav" type="audio/wav"></audio></td></tr>
-        <tr>
-        <td><audio controls><source src="demos/codec_GT/libritts_492-131882_000011_000000.wav" type="audio/wav"></audio></td><td><audio controls><source src="demos/codec_VQVAE/libritts_492-131882_000011_000000.wav" type="audio/wav"></audio></td><td><audio controls><source src="demos/codec_EnCodec-1VQ/libritts_492-131882_000011_000000.wav" type="audio/wav"></audio></td><td><audio controls><source src="demos/codec_TiCodec-1VQ/libritts_492-131882_000011_000000.wav" type="audio/wav"></audio></td><td><audio controls><source src="demos/codec_TiCodec-2VQ/libritts_492-131882_000011_000000.wav" type="audio/wav"></audio></td><td><audio controls><source src="demos/codec_Single-Codec/libritts_492-131882_000011_000000.wav" type="audio/wav"></audio></td></tr>
-        <tr>
-        <td><audio controls><source src="demos/codec_GT/libritts_2506-11278_000007_000007.wav" type="audio/wav"></audio></td><td><audio controls><source src="demos/codec_VQVAE/libritts_2506-11278_000007_000007.wav" type="audio/wav"></audio></td><td><audio controls><source src="demos/codec_EnCodec-1VQ/libritts_2506-11278_000007_000007.wav" type="audio/wav"></audio></td><td><audio controls><source src="demos/codec_TiCodec-1VQ/libritts_2506-11278_000007_000007.wav" type="audio/wav"></audio></td><td><audio controls><source src="demos/codec_TiCodec-2VQ/libritts_2506-11278_000007_000007.wav" type="audio/wav"></audio></td><td><audio controls><source src="demos/codec_Single-Codec/libritts_2506-11278_000007_000007.wav" type="audio/wav"></audio></td></tr>
-        <tr>
-        <td><audio controls><source src="demos/codec_GT/libritts_8975-270782_000021_000005.wav" type="audio/wav"></audio></td><td><audio controls><source src="demos/codec_VQVAE/libritts_8975-270782_000021_000005.wav" type="audio/wav"></audio></td><td><audio controls><source src="demos/codec_EnCodec-1VQ/libritts_8975-270782_000021_000005.wav" type="audio/wav"></audio></td><td><audio controls><source src="demos/codec_TiCodec-1VQ/libritts_8975-270782_000021_000005.wav" type="audio/wav"></audio></td><td><audio controls><source src="demos/codec_TiCodec-2VQ/libritts_8975-270782_000021_000005.wav" type="audio/wav"></audio></td><td><audio controls><source src="demos/codec_Single-Codec/libritts_8975-270782_000021_000005.wav" type="audio/wav"></audio></td></tr>
-        <tr>
-        <td><audio controls><source src="demos/codec_GT/SSB00570044.wav" type="audio/wav"></audio></td><td><audio controls><source src="demos/codec_VQVAE/SSB00570044.wav" type="audio/wav"></audio></td><td><audio controls><source src="demos/codec_EnCodec-1VQ/SSB00570044.wav" type="audio/wav"></audio></td><td><audio controls><source src="demos/codec_TiCodec-1VQ/SSB00570044.wav" type="audio/wav"></audio></td><td><audio controls><source src="demos/codec_TiCodec-2VQ/SSB00570044.wav" type="audio/wav"></audio></td><td><audio controls><source src="demos/codec_Single-Codec/SSB00570044.wav" type="audio/wav"></audio></td></tr>
-        <tr>
-        <td><audio controls><source src="demos/codec_GT/SSB00570173.wav" type="audio/wav"></audio></td><td><audio controls><source src="demos/codec_VQVAE/SSB00570173.wav" type="audio/wav"></audio></td><td><audio controls><source src="demos/codec_EnCodec-1VQ/SSB00570173.wav" type="audio/wav"></audio></td><td><audio controls><source src="demos/codec_TiCodec-1VQ/SSB00570173.wav" type="audio/wav"></audio></td><td><audio controls><source src="demos/codec_TiCodec-2VQ/SSB00570173.wav" type="audio/wav"></audio></td><td><audio controls><source src="demos/codec_Single-Codec/SSB00570173.wav" type="audio/wav"></audio></td></tr>
-        <tr>
-        <td><audio controls><source src="demos/codec_GT/SSB00570227.wav" type="audio/wav"></audio></td><td><audio controls><source src="demos/codec_VQVAE/SSB00570227.wav" type="audio/wav"></audio></td><td><audio controls><source src="demos/codec_EnCodec-1VQ/SSB00570227.wav" type="audio/wav"></audio></td><td><audio controls><source src="demos/codec_TiCodec-1VQ/SSB00570227.wav" type="audio/wav"></audio></td><td><audio controls><source src="demos/codec_TiCodec-2VQ/SSB00570227.wav" type="audio/wav"></audio></td><td><audio controls><source src="demos/codec_Single-Codec/SSB00570227.wav" type="audio/wav"></audio></td></tr>
-        <tr>
-        <td><audio controls><source src="demos/codec_GT/SSB00570260.wav" type="audio/wav"></audio></td><td><audio controls><source src="demos/codec_VQVAE/SSB00570260.wav" type="audio/wav"></audio></td><td><audio controls><source src="demos/codec_EnCodec-1VQ/SSB00570260.wav" type="audio/wav"></audio></td><td><audio controls><source src="demos/codec_TiCodec-1VQ/SSB00570260.wav" type="audio/wav"></audio></td><td><audio controls><source src="demos/codec_TiCodec-2VQ/SSB00570260.wav" type="audio/wav"></audio></td><td><audio controls><source src="demos/codec_Single-Codec/SSB00570260.wav" type="audio/wav"></audio></td></tr>
-        </table>
-        
+      <style>
+      table {
+        border-collapse: collapse;
+        width: 100%;
+        margin: 20px 0;
+      }
+      th, td {
+        border-bottom: 1px solid #ddd;
+        padding: 15px;
+        text-align: left;
+        vertical-align: top;
+      }
+      th {
+        background-color: #f2f2f2;
+        font-weight: bold;
+      }
+      tr:hover {
+        background-color: #f5f5f5;
+      }
+    </style>
 
-      <!-- <h2 id="TTS">4. Audio Samples: VALL-E Zero-shot TTS based on different codecs <a name="TTS"></a></h2>
+    <table>
+  <thead>
+    <tr>
+      <th style="text-align: center;">BGM Instruction</th>
+      <th style="text-align: center;">source audio</th>
+      <th style="text-align: center;">target audio</th>
+      <th style="text-align: center;">Synthesis Audio</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left; vertical-align: middle;">
+        <b>genre:</b> The genre of music is hip hop.<br><br>
+        <b>instrumentation:</b> The instruments used in the music piece include a drum machine, a synthesizer, and a bass guitar.<br><br>
+        <b>rhythm and melody:</b> The tempo is 100 BPM, and the key signature is G major. The melody is characterized by a strong, rhythmic beat and a catchy, repetitive hook.<br><br>
+        <b>mood and atmosphere:</b> The music feels like a lively, upbeat party scene. The combination of the confident male vocals, the driving drum machine beat, and the catchy synth melody creates a sense of excitement and energy, as if the singer is inviting the listener to join in the fun."</td>
+      <td style="text-align: center; vertical-align: middle;">
+        <audio controls><source src="demos/svc/1_source.wav" type="audio/wav"></audio>
+      </td>
+      <td style="text-align: center; vertical-align: middle;">
+        <audio controls><source src="demos/svc/1_tar.wav" type="audio/wav"></audio>
+      </td>
+      <td style="text-align: center; vertical-align: middle;">
+        <audio controls><source src="demos/svc/1_syn.wav" type="audio/wav"></audio>
+      </td>
+    </tr>
+    
+     <tr>
+      <td style="text-align: left; vertical-align: middle;">
+        <b>genre:</b> The genre of music is pop.<br><br>
+        <b>instrumentation:</b> The instruments used in the music piece include a piano, synthesizer, and electric guitar.<br><br>
+        <b>rhythm and melody:</b>  The tempo is moderate, around 140 BPM, and the key signature is F minor.<br><br>
+        <b>mood and atmosphere:</b> The music evokes a sense of longing and melancholy, with the singer's smooth voice and the soft, dreamy instrumentation creating a reflective and emotional atmosphere.</td>
+      <td style="text-align: center; vertical-align: middle;">
+        <audio controls><source src="demos/svc/3_source.wav" type="audio/wav"></audio>
+      </td>
+      <td style="text-align: center; vertical-align: middle;">
+        <audio controls><source src="demos/svc/3_tar.wav" type="audio/wav"></audio>
+      </td>
+      <td style="text-align: center; vertical-align: middle;">
+        <audio controls><source src="demos/svc/3_syn.wav" type="audio/wav"></audio>
+      </td>
+    </tr>
 
-      <table>
-        <tr>
-        <th>Prompt Audio</th><th>VQVAE</th><th>EnCodec-1VQ</th><th>EnCodec-4VQ</th><th>EnCodec-8VQ</th><th>TiCodec-1VQ</th><th>Single-Codec</th></tr>
-        <tr>
-        <td rowspan="12" style="text-align: center;"><p>Chinese speaker</p><audio controls><source src="demos/tts_prompt/BAC009S0143W0256.wav" type="audio/wav"></audio></td><tr><td colspan="6">That was before the day of high-school athletics.</td></tr><td><audio controls><source src="demos/tts_VQVAE/BAC009S0143W0256-libritts_2004-147981_000003_000000.wav" type="audio/wav"></audio></td><td><audio controls><source src="demos/tts_EnCodec-1VQ/BAC009S0143W0256-libritts_2004-147981_000003_000000.wav" type="audio/wav"></audio></td><td><audio controls><source src="demos/tts_EnCodec-4VQ/BAC009S0143W0256-libritts_2004-147981_000003_000000.wav" type="audio/wav"></audio></td><td><audio controls><source src="demos/tts_EnCodec-8VQ/BAC009S0143W0256-libritts_2004-147981_000003_000000.wav" type="audio/wav"></audio></td><td><audio controls><source src="demos/tts_TiCodec-1VQ/BAC009S0143W0256-libritts_2004-147981_000003_000000.wav" type="audio/wav"></audio></td><td><audio controls><source src="demos/tts_Single-Codec/BAC009S0143W0256-libritts_2004-147981_000003_000000.wav" type="audio/wav"></audio></td></tr>
-        <tr>
-        <tr><td colspan="6">He had found your humble servant, then about six months old.</td></tr><td><audio controls><source src="demos/tts_VQVAE/BAC009S0143W0256-libritts_5979-42002_000006_000008.wav" type="audio/wav"></audio></td><td><audio controls><source src="demos/tts_EnCodec-1VQ/BAC009S0143W0256-libritts_5979-42002_000006_000008.wav" type="audio/wav"></audio></td><td><audio controls><source src="demos/tts_EnCodec-4VQ/BAC009S0143W0256-libritts_5979-42002_000006_000008.wav" type="audio/wav"></audio></td><td><audio controls><source src="demos/tts_EnCodec-8VQ/BAC009S0143W0256-libritts_5979-42002_000006_000008.wav" type="audio/wav"></audio></td><td><audio controls><source src="demos/tts_TiCodec-1VQ/BAC009S0143W0256-libritts_5979-42002_000006_000008.wav" type="audio/wav"></audio></td><td><audio controls><source src="demos/tts_Single-Codec/BAC009S0143W0256-libritts_5979-42002_000006_000008.wav" type="audio/wav"></audio></td></tr>
-        <tr>
-        <tr><td colspan="6">Some, wounded or killed, fell back into the rooms, uttering piercing cries.</td></tr><td><audio controls><source src="demos/tts_VQVAE/BAC009S0143W0256-libritts_6153-62535_000065_000004.wav" type="audio/wav"></audio></td><td><audio controls><source src="demos/tts_EnCodec-1VQ/BAC009S0143W0256-libritts_6153-62535_000065_000004.wav" type="audio/wav"></audio></td><td><audio controls><source src="demos/tts_EnCodec-4VQ/BAC009S0143W0256-libritts_6153-62535_000065_000004.wav" type="audio/wav"></audio></td><td><audio controls><source src="demos/tts_EnCodec-8VQ/BAC009S0143W0256-libritts_6153-62535_000065_000004.wav" type="audio/wav"></audio></td><td><audio controls><source src="demos/tts_TiCodec-1VQ/BAC009S0143W0256-libritts_6153-62535_000065_000004.wav" type="audio/wav"></audio></td><td><audio controls><source src="demos/tts_Single-Codec/BAC009S0143W0256-libritts_6153-62535_000065_000004.wav" type="audio/wav"></audio></td></tr>
-        <tr>
-        <tr><td colspan="6">She will do for me.</td></tr><td><audio controls><source src="demos/tts_VQVAE/BAC009S0143W0256-p263_160_mic1.wav" type="audio/wav"></audio></td><td><audio controls><source src="demos/tts_EnCodec-1VQ/BAC009S0143W0256-p263_160_mic1.wav" type="audio/wav"></audio></td><td><audio controls><source src="demos/tts_EnCodec-4VQ/BAC009S0143W0256-p263_160_mic1.wav" type="audio/wav"></audio></td><td><audio controls><source src="demos/tts_EnCodec-8VQ/BAC009S0143W0256-p263_160_mic1.wav" type="audio/wav"></audio></td><td><audio controls><source src="demos/tts_TiCodec-1VQ/BAC009S0143W0256-p263_160_mic1.wav" type="audio/wav"></audio></td><td><audio controls><source src="demos/tts_Single-Codec/BAC009S0143W0256-p263_160_mic1.wav" type="audio/wav"></audio></td></tr>
-        <tr>
-        <td rowspan="12" style="text-align: center;"><p>English speaker</p><audio controls><source src="demos/tts_prompt/libritts_816-2301_000003_000001.wav" type="audio/wav"></audio></td><tr><td colspan="6">"Your wife!" cried Kate.</td></tr><td><audio controls><source src="demos/tts_VQVAE/libritts_816-2301_000003_000001-libritts_1851-148312_000011_000000.wav" type="audio/wav"></audio></td><td><audio controls><source src="demos/tts_EnCodec-1VQ/libritts_816-2301_000003_000001-libritts_1851-148312_000011_000000.wav" type="audio/wav"></audio></td><td><audio controls><source src="demos/tts_EnCodec-4VQ/libritts_816-2301_000003_000001-libritts_1851-148312_000011_000000.wav" type="audio/wav"></audio></td><td><audio controls><source src="demos/tts_EnCodec-8VQ/libritts_816-2301_000003_000001-libritts_1851-148312_000011_000000.wav" type="audio/wav"></audio></td><td><audio controls><source src="demos/tts_TiCodec-1VQ/libritts_816-2301_000003_000001-libritts_1851-148312_000011_000000.wav" type="audio/wav"></audio></td><td><audio controls><source src="demos/tts_Single-Codec/libritts_816-2301_000003_000001-libritts_1851-148312_000011_000000.wav" type="audio/wav"></audio></td></tr>
-        <tr>
-        <tr><td colspan="6">She had heard all about the Princess's dream.</td></tr><td><audio controls><source src="demos/tts_VQVAE/libritts_816-2301_000003_000001-libritts_2588-160947_000071_000001.wav" type="audio/wav"></audio></td><td><audio controls><source src="demos/tts_EnCodec-1VQ/libritts_816-2301_000003_000001-libritts_2588-160947_000071_000001.wav" type="audio/wav"></audio></td><td><audio controls><source src="demos/tts_EnCodec-4VQ/libritts_816-2301_000003_000001-libritts_2588-160947_000071_000001.wav" type="audio/wav"></audio></td><td><audio controls><source src="demos/tts_EnCodec-8VQ/libritts_816-2301_000003_000001-libritts_2588-160947_000071_000001.wav" type="audio/wav"></audio></td><td><audio controls><source src="demos/tts_TiCodec-1VQ/libritts_816-2301_000003_000001-libritts_2588-160947_000071_000001.wav" type="audio/wav"></audio></td><td><audio controls><source src="demos/tts_Single-Codec/libritts_816-2301_000003_000001-libritts_2588-160947_000071_000001.wav" type="audio/wav"></audio></td></tr>
-        <tr>
-        <tr><td colspan="6">mrs Presty interposed.</td></tr><td><audio controls><source src="demos/tts_VQVAE/libritts_816-2301_000003_000001-libritts_7848-275149_000003_000000.wav" type="audio/wav"></audio></td><td><audio controls><source src="demos/tts_EnCodec-1VQ/libritts_816-2301_000003_000001-libritts_7848-275149_000003_000000.wav" type="audio/wav"></audio></td><td><audio controls><source src="demos/tts_EnCodec-4VQ/libritts_816-2301_000003_000001-libritts_7848-275149_000003_000000.wav" type="audio/wav"></audio></td><td><audio controls><source src="demos/tts_EnCodec-8VQ/libritts_816-2301_000003_000001-libritts_7848-275149_000003_000000.wav" type="audio/wav"></audio></td><td><audio controls><source src="demos/tts_TiCodec-1VQ/libritts_816-2301_000003_000001-libritts_7848-275149_000003_000000.wav" type="audio/wav"></audio></td><td><audio controls><source src="demos/tts_Single-Codec/libritts_816-2301_000003_000001-libritts_7848-275149_000003_000000.wav" type="audio/wav"></audio></td></tr>
-        <tr>
-        <tr><td colspan="6">She will do for me.</td></tr><td><audio controls><source src="demos/tts_VQVAE/libritts_816-2301_000003_000001-p263_160_mic1.wav" type="audio/wav"></audio></td><td><audio controls><source src="demos/tts_EnCodec-1VQ/libritts_816-2301_000003_000001-p263_160_mic1.wav" type="audio/wav"></audio></td><td><audio controls><source src="demos/tts_EnCodec-4VQ/libritts_816-2301_000003_000001-p263_160_mic1.wav" type="audio/wav"></audio></td><td><audio controls><source src="demos/tts_EnCodec-8VQ/libritts_816-2301_000003_000001-p263_160_mic1.wav" type="audio/wav"></audio></td><td><audio controls><source src="demos/tts_TiCodec-1VQ/libritts_816-2301_000003_000001-p263_160_mic1.wav" type="audio/wav"></audio></td><td><audio controls><source src="demos/tts_Single-Codec/libritts_816-2301_000003_000001-p263_160_mic1.wav" type="audio/wav"></audio></td></tr>
-        <tr>
-        <td rowspan="12" style="text-align: center;"><p>English speaker</p><audio controls><source src="demos/tts_prompt/p300_314_mic1.wav" type="audio/wav"></audio></td><tr><td colspan="6">and a service of plate.</td></tr><td><audio controls><source src="demos/tts_VQVAE/p300_314_mic1-hifitts_11614_other-11965petersimple_01_marryat_0039.wav" type="audio/wav"></audio></td><td><audio controls><source src="demos/tts_EnCodec-1VQ/p300_314_mic1-hifitts_11614_other-11965petersimple_01_marryat_0039.wav" type="audio/wav"></audio></td><td><audio controls><source src="demos/tts_EnCodec-4VQ/p300_314_mic1-hifitts_11614_other-11965petersimple_01_marryat_0039.wav" type="audio/wav"></audio></td><td><audio controls><source src="demos/tts_EnCodec-8VQ/p300_314_mic1-hifitts_11614_other-11965petersimple_01_marryat_0039.wav" type="audio/wav"></audio></td><td><audio controls><source src="demos/tts_TiCodec-1VQ/p300_314_mic1-hifitts_11614_other-11965petersimple_01_marryat_0039.wav" type="audio/wav"></audio></td><td><audio controls><source src="demos/tts_Single-Codec/p300_314_mic1-hifitts_11614_other-11965petersimple_01_marryat_0039.wav" type="audio/wav"></audio></td></tr>
-        <tr>
-        <tr><td colspan="6">It always ends, it is true, in an awakening, but the awakening is tardy.</td></tr><td><audio controls><source src="demos/tts_VQVAE/p300_314_mic1-libritts_4313-9937_000010_000004.wav" type="audio/wav"></audio></td><td><audio controls><source src="demos/tts_EnCodec-1VQ/p300_314_mic1-libritts_4313-9937_000010_000004.wav" type="audio/wav"></audio></td><td><audio controls><source src="demos/tts_EnCodec-4VQ/p300_314_mic1-libritts_4313-9937_000010_000004.wav" type="audio/wav"></audio></td><td><audio controls><source src="demos/tts_EnCodec-8VQ/p300_314_mic1-libritts_4313-9937_000010_000004.wav" type="audio/wav"></audio></td><td><audio controls><source src="demos/tts_TiCodec-1VQ/p300_314_mic1-libritts_4313-9937_000010_000004.wav" type="audio/wav"></audio></td><td><audio controls><source src="demos/tts_Single-Codec/p300_314_mic1-libritts_4313-9937_000010_000004.wav" type="audio/wav"></audio></td></tr>
-        <tr>
-        <tr><td colspan="6">"I won't let the little beast kiss me," stipulated Victor.</td></tr><td><audio controls><source src="demos/tts_VQVAE/p300_314_mic1-libritts_7150-2338_000034_000000.wav" type="audio/wav"></audio></td><td><audio controls><source src="demos/tts_EnCodec-1VQ/p300_314_mic1-libritts_7150-2338_000034_000000.wav" type="audio/wav"></audio></td><td><audio controls><source src="demos/tts_EnCodec-4VQ/p300_314_mic1-libritts_7150-2338_000034_000000.wav" type="audio/wav"></audio></td><td><audio controls><source src="demos/tts_EnCodec-8VQ/p300_314_mic1-libritts_7150-2338_000034_000000.wav" type="audio/wav"></audio></td><td><audio controls><source src="demos/tts_TiCodec-1VQ/p300_314_mic1-libritts_7150-2338_000034_000000.wav" type="audio/wav"></audio></td><td><audio controls><source src="demos/tts_Single-Codec/p300_314_mic1-libritts_7150-2338_000034_000000.wav" type="audio/wav"></audio></td></tr>
-        <tr>
-        <tr><td colspan="6">A beautiful silver studded sword was the King's gift to him.</td></tr><td><audio controls><source src="demos/tts_VQVAE/p300_314_mic1-libritts_8543-280376_000075_000001.wav" type="audio/wav"></audio></td><td><audio controls><source src="demos/tts_EnCodec-1VQ/p300_314_mic1-libritts_8543-280376_000075_000001.wav" type="audio/wav"></audio></td><td><audio controls><source src="demos/tts_EnCodec-4VQ/p300_314_mic1-libritts_8543-280376_000075_000001.wav" type="audio/wav"></audio></td><td><audio controls><source src="demos/tts_EnCodec-8VQ/p300_314_mic1-libritts_8543-280376_000075_000001.wav" type="audio/wav"></audio></td><td><audio controls><source src="demos/tts_TiCodec-1VQ/p300_314_mic1-libritts_8543-280376_000075_000001.wav" type="audio/wav"></audio></td><td><audio controls><source src="demos/tts_Single-Codec/p300_314_mic1-libritts_8543-280376_000075_000001.wav" type="audio/wav"></audio></td></tr>
-        <tr>
-        <td rowspan="12" style="text-align: center;"><p>Chinese speaker</p><audio controls><source src="demos/tts_prompt/SSB13650221.wav" type="audio/wav"></audio></td><tr><td colspan="6">他以二十一米七四的成绩摘得一枚银牌</td></tr><td><audio controls><source src="demos/tts_VQVAE/SSB13650221-BAC009S0008W0381.wav" type="audio/wav"></audio></td><td><audio controls><source src="demos/tts_EnCodec-1VQ/SSB13650221-BAC009S0008W0381.wav" type="audio/wav"></audio></td><td><audio controls><source src="demos/tts_EnCodec-4VQ/SSB13650221-BAC009S0008W0381.wav" type="audio/wav"></audio></td><td><audio controls><source src="demos/tts_EnCodec-8VQ/SSB13650221-BAC009S0008W0381.wav" type="audio/wav"></audio></td><td><audio controls><source src="demos/tts_TiCodec-1VQ/SSB13650221-BAC009S0008W0381.wav" type="audio/wav"></audio></td><td><audio controls><source src="demos/tts_Single-Codec/SSB13650221-BAC009S0008W0381.wav" type="audio/wav"></audio></td></tr>
-        <tr>
-        <tr><td colspan="6">CHAPTER sixteen.</td></tr><td><audio controls><source src="demos/tts_VQVAE/SSB13650221-libritts_5139-61422_000003_000000.wav" type="audio/wav"></audio></td><td><audio controls><source src="demos/tts_EnCodec-1VQ/SSB13650221-libritts_5139-61422_000003_000000.wav" type="audio/wav"></audio></td><td><audio controls><source src="demos/tts_EnCodec-4VQ/SSB13650221-libritts_5139-61422_000003_000000.wav" type="audio/wav"></audio></td><td><audio controls><source src="demos/tts_EnCodec-8VQ/SSB13650221-libritts_5139-61422_000003_000000.wav" type="audio/wav"></audio></td><td><audio controls><source src="demos/tts_TiCodec-1VQ/SSB13650221-libritts_5139-61422_000003_000000.wav" type="audio/wav"></audio></td><td><audio controls><source src="demos/tts_Single-Codec/SSB13650221-libritts_5139-61422_000003_000000.wav" type="audio/wav"></audio></td></tr>
-        <tr>
-        <tr><td colspan="6">The man let me have him for my silver chain.</td></tr><td><audio controls><source src="demos/tts_VQVAE/SSB13650221-libritts_7046-85651_000040_000003.wav" type="audio/wav"></audio></td><td><audio controls><source src="demos/tts_EnCodec-1VQ/SSB13650221-libritts_7046-85651_000040_000003.wav" type="audio/wav"></audio></td><td><audio controls><source src="demos/tts_EnCodec-4VQ/SSB13650221-libritts_7046-85651_000040_000003.wav" type="audio/wav"></audio></td><td><audio controls><source src="demos/tts_EnCodec-8VQ/SSB13650221-libritts_7046-85651_000040_000003.wav" type="audio/wav"></audio></td><td><audio controls><source src="demos/tts_TiCodec-1VQ/SSB13650221-libritts_7046-85651_000040_000003.wav" type="audio/wav"></audio></td><td><audio controls><source src="demos/tts_Single-Codec/SSB13650221-libritts_7046-85651_000040_000003.wav" type="audio/wav"></audio></td></tr>
-        <tr>
-        <tr><td colspan="6">而在基金销售市场发挥的作用越来越大</td></tr><td><audio controls><source src="demos/tts_VQVAE/SSB13650221-SSB14310340.wav" type="audio/wav"></audio></td><td><audio controls><source src="demos/tts_EnCodec-1VQ/SSB13650221-SSB14310340.wav" type="audio/wav"></audio></td><td><audio controls><source src="demos/tts_EnCodec-4VQ/SSB13650221-SSB14310340.wav" type="audio/wav"></audio></td><td><audio controls><source src="demos/tts_EnCodec-8VQ/SSB13650221-SSB14310340.wav" type="audio/wav"></audio></td><td><audio controls><source src="demos/tts_TiCodec-1VQ/SSB13650221-SSB14310340.wav" type="audio/wav"></audio></td><td><audio controls><source src="demos/tts_Single-Codec/SSB13650221-SSB14310340.wav" type="audio/wav"></audio></td></tr>
-        </table> -->
+    
+    <tr>
+      <td style="text-align: left; vertical-align: middle;">
+        <b>genre:</b> The genre of music is pop.<br><br>
+        <b>instrumentation:</b> The instruments used in the music piece include a guitar, a bass, and a drum.<br><br>
+        <b>rhythm and melody:</b>  The tempo is 134.033 bpm. The key signature is D major.<br><br>
+        <b>mood and atmosphere:</b> The music feels like a heartfelt confession, with the singer's emotional tone and the soft, melodic guitar and bass creating a sense of vulnerability and longing.</td>
+      <td style="text-align: center; vertical-align: middle;">
+        <audio controls><source src="demos/svc/4_source.wav" type="audio/wav"></audio>
+      </td>
+      <td style="text-align: center; vertical-align: middle;">
+        <audio controls><source src="demos/svc/4_tar.wav" type="audio/wav"></audio>
+      </td>
+      <td style="text-align: center; vertical-align: middle;">
+        <audio controls><source src="demos/svc/4_syn.wav" type="audio/wav"></audio>
+      </td>
+    </tr>
+
+    <tr>
+      <td style="text-align: left; vertical-align: middle;">
+        <b>genre:</b> The genre of music is pop.<br><br>
+        <b>instrumentation:</b> The instruments used in the music piece include a guitar, a keyboard, and a drum set.<br><br>
+        <b>rhythm and melody:</b>  The tempo is moderate, around 100 BPM, and the key signature is Bb major.<br><br>
+        <b>mood and atmosphere:</b> The music creates a warm and nostalgic atmosphere, evoking feelings of love and longing. The soft guitar strums and gentle keyboard melodies blend harmoniously, accompanied by the rhythmic drum beats, to create a soothing and intimate listening experience.</td>
+      <td style="text-align: center; vertical-align: middle;">
+        <audio controls><source src="demos/svc/5_source.wav" type="audio/wav"></audio>
+      </td>
+      <td style="text-align: center; vertical-align: middle;">
+        <audio controls><source src="demos/svc/5_tar.wav" type="audio/wav"></audio>
+      </td>
+      <td style="text-align: center; vertical-align: middle;">
+        <audio controls><source src="demos/svc/5_syn.wav" type="audio/wav"></audio>
+      </td>
+    </tr>
+
+    
+    <tr>
+      <td style="text-align: left; vertical-align: middle;">
+        <b>genre:</b> The genre of music is classical.<br><br>
+        <b>instrumentation:</b> The instruments used in the music piece include a piano, strings, and a choir.<br><br>
+        <b>rhythm and melody:</b> The tempo is moderate, with a steady and flowing rhythm. The key signature is F minor.<br><br>
+        <b>mood and atmosphere:</b> The music evokes a sense of tranquility and introspection. The soft piano melodies, combined with the gentle strings and choir, create a serene and reflective atmosphere, reminiscent of a peaceful countryside village.</td>
+      <td style="text-align: center; vertical-align: middle;">
+        <audio controls><source src="demos/svc/6_source.wav" type="audio/wav"></audio>
+      </td>
+      <td style="text-align: center; vertical-align: middle;">
+        <audio controls><source src="demos/svc/6_tar.wav" type="audio/wav"></audio>
+      </td>
+      <td style="text-align: center; vertical-align: middle;">
+        <audio controls><source src="demos/svc/6_syn.wav" type="audio/wav"></audio>
+      </td>
+    </tr>
+
+    <tr>
+      <td style="text-align: left; vertical-align: middle;">
+        <b>genre:</b> The genre of music is hip hop.<br><br>
+        <b>instrumentation:</b> The instruments used in the music piece include a prominent drum beat, a bassline, and a synthesizer.<br><br>
+        <b>rhythm and melody:</b> The tempo is moderate, around 90 BPM, with a steady and driving rhythm. The key signature is A minor.<br><br>
+        <b>mood and atmosphere:</b> The music feels energetic and upbeat, with a sense of confidence and determination. The combination of the rhythmic drum beat, the smooth bassline, and the confident vocal delivery creates an atmosphere of empowerment and ambition.</td>
+      <td style="text-align: center; vertical-align: middle;">
+        <audio controls><source src="demos/svc/7_source.wav" type="audio/wav"></audio>
+      </td>
+      <td style="text-align: center; vertical-align: middle;">
+        <audio controls><source src="demos/svc/7_tar.wav" type="audio/wav"></audio>
+      </td>
+      <td style="text-align: center; vertical-align: middle;">
+        <audio controls><source src="demos/svc/7_syn.wav" type="audio/wav"></audio>
+      </td>
+    </tr>
+
+    <tr>
+      <td style="text-align: left; vertical-align: middle;">
+        <b>genre:</b> The genre of music is hip-hop.<br><br>
+        <b>instrumentation:</b> The instruments used in the music piece include a prominent bassline, rhythmic drums, and a synthesizer.<br><br>
+        <b>rhythm and melody:</b> The tempo is moderate, around 140 BPM, with a steady beat that drives the rhythm. The key signature is C minor, giving the music a somber yet energetic feel.<br><br>
+        <b>mood and atmosphere:</b> The music creates a gritty, urban atmosphere, evoking the hustle and bustle of city life. The combination of the smooth vocal delivery, the driving bassline, and the rhythmic drums work together to convey a sense of determination and resilience, as if the singer is navigating through the challenges of life with a cool, collected demeanor.</td>
+      <td style="text-align: center; vertical-align: middle;">
+        <audio controls><source src="demos/svc/8_source.wav" type="audio/wav"></audio>
+      </td>
+      <td style="text-align: center; vertical-align: middle;">
+        <audio controls><source src="demos/svc/8_tar.wav" type="audio/wav"></audio>
+      </td>
+      <td style="text-align: center; vertical-align: middle;">
+        <audio controls><source src="demos/svc/8_syn.wav" type="audio/wav"></audio>
+      </td>
+    </tr>
+
+
+
+
+
+  </tbody>
+</table>
+
         
     <footer class="site-footer">
 
